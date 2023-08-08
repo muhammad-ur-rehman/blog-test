@@ -1,0 +1,30 @@
+<div class="posts-container">
+  <h1 class="posts-heading">All Posts</h1>
+  <table class="posts-table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <td><%= link_to post.title, post, class: "post-link" %></td>
+          <% if policy(post).update? %>
+          <td><%= link_to 'Edit', edit_post_path(post), class: "edit-post-link btn btn--light" %></td>
+          <% end %>
+          <% if policy(post).destroy? %>
+          <td>
+            <%= form_for(post, method: :delete, data: { }) do |f| %>
+              <%= f.submit 'Delete', class: " btn btn--primary" %>
+            <% end %>
+          </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= link_to 'New Post', new_post_path, class: "new-post-link" %>
+</div>

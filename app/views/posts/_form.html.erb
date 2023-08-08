@@ -1,0 +1,9 @@
+<%= form_with(model: @post, local: true) do |form| %>
+  <%= form.label :title %>
+  <%= form.text_field :title, required: true %>
+  
+  <%= form.label :content %>
+  <%= form.text_area :content, required: true %>
+  
+  <%= form.submit class: 'btn btn--secondary' %>
+<% end %>
