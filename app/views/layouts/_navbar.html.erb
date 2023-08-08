@@ -1,0 +1,17 @@
+<nav class="navbar">
+  <div class="navbar-brand">
+    <%= link_to "POSTS APP", root_path, class: "navbar-item" %>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-end">
+      <div class="navbar-item-container">
+        <% if user_signed_in? %>
+          <%= form_tag destroy_user_session_path, method: :delete do %>
+            <%= button_tag "Sign Out", class: "btn btn--primary navbar-item" %>
+          <% end %>
+        <% end %>
+        <%= link_to "Posts", posts_path, class: "btn btn--primary navbar-item" %>
+      </div>
+    </div>
+  </div>
+</nav>
